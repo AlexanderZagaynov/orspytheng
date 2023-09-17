@@ -1,8 +1,30 @@
 ## Development environment
 
 ### Min
-- [ ] venv (`python -m venv --system-site-packages --symlinks --upgrade --upgrade-deps .venv`)
-- [ ] MySQL (`apt install mysql-server`)
+- [ ] venv
+    ```
+    sudo apt install python3-venv python3-django python3-mysqldb
+    python3 -m venv --system-site-packages --symlinks --clear --upgrade-deps .venv # --upgrade
+    source .venv/bin/activate
+    pip install graphene_django
+    ```
+
+- [ ] MySQL
+    ```bash
+    sudo apt install mysql-server
+    sudo /etc/init.d/mysql start # status
+    sudo mysql
+    ```
+    ```mysql
+    CREATE DATABASE orspytheng_development CHARACTER SET utf8;
+    CREATE USER 'orspytheng_app' IDENTIFIED BY 'orspytheng_pass';
+    GRANT ALL PRIVILEGES ON `orspytheng\_%` .  * TO 'orspytheng_app'@'%';
+    FLUSH PRIVILEGES;
+    exit
+    ```
+    ```bash
+    ./manage.py migrate
+    ```
 
 ### Backlog
 - [ ] cloud dev env (GH codespaces?)
@@ -65,19 +87,45 @@
 - [ ] think about versioning
 - [ ] do not forget about healthchecks
 
-### Define test cases
-- [ ] enlist features to test
+### Enlist features to implement
+- [ ] add new car
+- [ ] update car
+- [ ] remove car
+- [ ] list cars
+- [ ] check availability and reserve the car
+- [ ] see cars availability
+- [ ] see (upcoming) car reservations
 
 ### Establish minimal dev env
-- [ ] prepare environment
-- [ ] database connection
-- [ ] run blank app
+- [x] prepare environment
+- [x] init the app
+    ```
+    django-admin startproject api .
+    ./manage.py startapp cars
+    ```
+- [x] run blank app
+    ```
+    ./manage.py runserver
+    ```
 - [ ] run empty tests
 
 ### Prepare database
-- [ ] create db(s)
+- [x] create db(s)
+- [x] database connection
+- [ ] models
 - [ ] migrations
+    ```bash
+    ./manage.py makemigrations
+    ./manage.py migrate
+    ```
 - [ ] seeds
+    ```bash
+    ./manage.py loaddata cars
+    ```
+    see the `cars/fixtures/cars.json` file
+
+### Run API server
+- [x] `/graphql` for cars
 
 ### Develop test cases
 - [ ] unit tests

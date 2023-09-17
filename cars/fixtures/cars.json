@@ -1,0 +1,18 @@
+[
+  {
+    "fields": {
+      "make": "FMC",
+      "model": "Focus"
+    },
+    "model": "cars.car",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "make": "DC",
+      "model": "Maybach"
+    },
+    "model": "cars.car",
+    "pk": 2
+  }
+]
