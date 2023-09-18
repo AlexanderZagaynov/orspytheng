@@ -37,10 +37,13 @@ class CarUpdate(graphene.Mutation):
 
     @classmethod
     def mutate(cls, root, info, **input):
-        car_id = input.uid # TBD
+        car_id = Car.uid_to_id(input['uid'])
         car = Car.objects.get(pk=car_id)
-        car.make = input.make
-        car.model = input.model
+        # car_data = {key: input[key] for key in ['make', 'model'] if key in input}
+        if 'make' in input:
+            car.make = input['make']
+        if 'model' in input:
+            car.model = input['model']
         car.save()
         return cls(car=car)
 
@@ -52,8 +55,8 @@ class CarDelete(graphene.Mutation):
         uid = graphene.ID(required=True)
 
     @classmethod
-    def mutate(cls, root, info, car_uid):
-        car_id = car_uid # TBD
+    def mutate(cls, root, info, uid):
+        car_id = Car.uid_to_id(uid)
         car = Car.objects.get(pk=car_id)
         car.delete()
         return cls(ok=True)

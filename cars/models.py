@@ -12,14 +12,21 @@ class Car(models.Model):
     def uid(self):
         return f"C{self.id}"
 
+    @classmethod
+    def uid_to_id(cls, value):
+        if value == None:
+            return value
+
+        match = re.search(r'^C(?P<id>\d+)$', value, re.IGNORECASE)
+        if match:
+            return match["id"]
+
+        raise ValidationError(
+            _("Invalid UID"),
+            code="invalid",
+            params={"field": "uid"},
+        )
+
     @uid.setter
     def uid(self, value):
-        match = re.search(r'^C(?P<id>\d+)$', value, re.IGNORECASE)
-        if (match or value == None):
-            self.id = match["id"] if match else value
-        else:
-            raise ValidationError(
-                _("Invalid UID"),
-                code="invalid",
-                params={"field": "uid"},
-            )
+        self.id = self.__class__.uid_to_id(value)

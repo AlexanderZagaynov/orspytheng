@@ -16,8 +16,8 @@
 #### Cars
 - [x] list cars
 - [x] add new car
-- [ ] update car
-- [ ] remove car
+- [x] update car
+- [x] remove car
 
 #### Reservations
 - [ ] see cars availability
