@@ -11,26 +11,19 @@ class CarType(DjangoObjectType):
         model = Car
         fields = ("uid", "make", "model")
 
-    def resolve_uid(self, info):
-        return f"C{self.id}"
-
 
 class CarCreate(graphene.ClientIDMutation):
     car = graphene.Field(CarType)
 
     class Input:
-        uid = graphene.String()
+        uid = graphene.String(required=False, default=None) # autoassign if undefined
         make = graphene.String(required=True)
         model = graphene.String(required=True)
 
     @classmethod
     def mutate_and_get_payload(cls, root, info, **input):
-        car_id = input.uid # TBD
-        car = Car.objects.create(
-            id=car_id,
-            make=input.make,
-            model=input.model,
-        )
+        car_data = {key: input[key] for key in CarType._meta.fields.keys() if key in input}
+        car = Car.objects.create(**car_data)
         return cls(car=car)
 
 

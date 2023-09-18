@@ -15,8 +15,8 @@ class Car(models.Model):
     @uid.setter
     def uid(self, value):
         match = re.search(r'^C(?P<id>\d+)$', value, re.IGNORECASE)
-        if match:
-            self.id = match.id
+        if (match or value == None):
+            self.id = match["id"] if match else value
         else:
             raise ValidationError(
                 _("Invalid UID"),

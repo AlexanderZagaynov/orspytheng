@@ -15,7 +15,7 @@
 
 #### Cars
 - [x] list cars
-- [ ] add new car
+- [x] add new car
 - [ ] update car
 - [ ] remove car
 
