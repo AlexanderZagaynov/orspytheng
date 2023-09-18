@@ -39,3 +39,29 @@ class Reservation(models.Model):
             return None
 
         return self.starts_at + self.duraton_timedelta
+
+    @classmethod
+    def find_overlapped(cls, car_id, starts_at, duration):
+        cls.objects.raw(
+            """SQL
+            SELECT
+                id,
+                car_id,
+                starts_at,
+                duration,
+                DATE_ADD(starts_at, INTERVAL duration -1 MINUTE_SECOND) AS ends_at
+            FROM
+                reservations_reservation
+            WHERE
+                car_id = %s
+            AND
+                %s <= ends_at
+            AND
+                %s >= starts_at
+            """,
+            [
+                car_id,
+                starts_at,
+                ends_at,
+            ]
+        )

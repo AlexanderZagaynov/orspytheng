@@ -59,13 +59,13 @@ class ReservationTestCase(TestCase):
     def test_reservation_not_created_when_overlaps(self):
         with self.assertRaises(exceptions.ValidationError):
             Reservation.objects.create(
-            car=self.car,
+                car=self.car,
                 starts_at=datetime.fromisoformat("2023-09-18 10:00:00+00"),
                 duration=30,
             )
         with self.assertRaises(exceptions.ValidationError):
             Reservation.objects.create(
-            car=self.car,
+                car=self.car,
                 starts_at=datetime.fromisoformat("2023-09-18 10:50:00+00"),
                 duration=30,
             )
