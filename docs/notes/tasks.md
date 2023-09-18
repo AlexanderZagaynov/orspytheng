@@ -30,16 +30,19 @@
 ### Establish minimal dev env
 - [x] prepare environment
 - [x] init the app
-    ```
+    ```bash
     django-admin startproject api .
     ./manage.py startapp cars
     ./manage.py startapp reservations
     ```
 - [x] run blank app
-    ```
+    ```bash
     ./manage.py runserver
     ```
-- [ ] run empty tests
+- [x] run empty tests
+    ```bash
+    ./manage.py test
+    ```
 
 ### Prepare database
 - [x] create db(s)
@@ -66,7 +69,7 @@
 - [x] `/graphql` for cars
 
 ### Develop test cases
-- [ ] unit tests
+- [x] unit tests
 - [ ] API calls
 
 #### Backlog

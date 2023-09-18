@@ -2,7 +2,7 @@
   {
     "fields": {
       "car_id": 1,
-      "starts_at": "2023-09-18 10:00:00",
+      "starts_at": "2023-09-18 10:00:00+00",
       "duration": 60
     },
     "model": "reservations.reservation",
@@ -11,7 +11,7 @@
   {
     "fields": {
       "car_id": 1,
-      "starts_at": "2023-09-18 11:10:00",
+      "starts_at": "2023-09-18 11:10:00+00",
       "duration": 20
     },
     "model": "reservations.reservation",

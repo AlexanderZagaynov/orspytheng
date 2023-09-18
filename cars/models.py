@@ -29,4 +29,4 @@ class Car(models.Model):
 
     @uid.setter
     def uid(self, value):
-        self.id = self.__class__.uid_to_id(value)
+        self.id = self.uid_to_id(value)
