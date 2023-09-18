@@ -9,7 +9,7 @@ erDiagram
         ref id PK
         ref car_id FK
         datetime starts_at
-        integer lasts_for "minutes"
+        integer duration "minutes"
     }
     Car ||--o{ Reservation : "has many"
 ```

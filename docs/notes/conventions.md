@@ -3,8 +3,10 @@
 
 ### Directories layout
 
-- [ ] `./app-api-django` django app & its default layout
-- [ ] docs
+- [ ] `./api` django project & its default layout
+- [ ] `./cars` django app & its default layout
+- [ ] `./reservations` django app & its default layout
+- [ ] `./docs` **TBD**
 
 #### Tooling / scripts
 - [ ] dev env provisioning
@@ -19,6 +21,19 @@
 ### Documentation
 - [ ] what to document
 - [ ] how to document
+    ```python
+    def some_function():
+        """
+        _summary_
+
+        Args:
+            value (_type_, optional): _description_. Defaults to None.
+
+        Returns:
+            _type_: _description_
+        """
+        return something
+    ```
 
 
 ### Configuration

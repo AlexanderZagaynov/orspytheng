@@ -20,9 +20,11 @@
 - [x] remove car
 
 #### Reservations
-- [ ] see cars availability
 - [ ] reserve the car
-- [ ] see (upcoming) car reservations
+- [ ] see reservations
+- [ ] reservation validator
+- [ ] filter by car
+- [ ] filter upcoming / by period
 
 
 ### Establish minimal dev env
@@ -31,6 +33,7 @@
     ```
     django-admin startproject api .
     ./manage.py startapp cars
+    ./manage.py startapp reservations
     ```
 - [x] run blank app
     ```
@@ -41,21 +44,23 @@
 ### Prepare database
 - [x] create db(s)
 - [x] database connection
-- [ ] models
-- [ ] migrations
-    ```bash
-    ./manage.py makemigrations
-    ./manage.py migrate
-    ```
-- [ ] admin user
+- [x] admin user
     ```bash
     ./manage.py createsuperuser
     ```
-- [ ] seeds
+- [x] models: `Car`
+- [x] models: `Reservation`
+- [x] migrations
+    ```bash
+    ./manage.py makemigrations
+    ./manage.py migrate # migrate <app> zero
+    ```
+- [x] seeds
     ```bash
     ./manage.py loaddata cars
+    ./manage.py loaddata reservations
     ```
-    see the `cars/fixtures/cars.json` file
+    see the `<app>/fixtures/<data>.json` file
 
 ### Run API server
 - [x] `/graphql` for cars
@@ -80,6 +85,7 @@
 - [ ] generate API docs
 - [ ] dev env provisioning
 - [ ] project presentation
+- [ ] document methods / autogenerate docs
 
 ### Develop extra features
 - [ ] finalize notes
