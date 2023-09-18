@@ -83,6 +83,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         "OPTIONS": {
+            "host": "127.0.0.1",
             "user": "orspytheng_app",
             "password": "orspytheng_pass",
             "database": "orspytheng_development",
